@@ -2,10 +2,12 @@ const express = require('express');
 const { readFile } = require('fs');
 const { join } = require('path');
 const Fuse = require('fuse.js');
+const cors = require('cors')
 
 const app = express();
 const PORT = 3001;
 
+app.use(cors());
 app.get('/api/data', (req, res) => {
     readFile(join(__dirname, 'data.json'), 'utf8', (err, data) => {
         if (err) {
